@@ -18,12 +18,16 @@ composite_factors = []
 # recursive factorisation
 def factorisation(number):
     for factor in range(2, number):
-        if number == 2:
-            prime_factors.append(number)
-        elif number % factor == 0:
+        print(f"Number mod Factor = {number % factor}")
+        if number % factor == 0 and number != factor:
+            print("i was here")
             composite_factors.append(factor)
             factorisation(factor)
+        elif number % factor == 0 and number == factor:
+            prime_factors.append(factor)
+            print("i was here 2")
         else:
+            print("i was here 3")
             continue
     if len(composite_factors) > 0:
         for i in composite_factors:
@@ -32,11 +36,11 @@ def factorisation(number):
 
 
 # trial division
-def trial_division(composite_number):
+def trial_division():
     start_time = time.time()
-    factorisation(composite_number)
-    print(f"The largest prime factor was {prime_factors}\n {composite_factors}")
+    factorisation(user_integer)
+    print(f"The largest prime factor was: \n {prime_factors}\n {composite_factors}")
     print(f"--- {(time.time() - start_time)} seconds ---")
 
 
-trial_division(user_integer)
+trial_division()
