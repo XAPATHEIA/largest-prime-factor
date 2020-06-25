@@ -12,34 +12,26 @@ except Exception as err:
     exit()
 
 prime_factors = []
-composite_factors = []
 
 
 # recursive factorisation
 def factorisation(number):
+    composite_factors = []
     for factor in range(2, number):
         print(f"Number mod Factor = {number % factor}")
         if number % factor == 0 and number != factor:
-            print("i was here")
             composite_factors.append(factor)
-            factorisation(factor)
-        elif number % factor == 0 and number == factor:
-            prime_factors.append(factor)
-            print("i was here 2")
         else:
             print("i was here 3")
             continue
-    if len(composite_factors) > 0:
-        for i in composite_factors:
-            composite_factors.remove(i)
-            factorisation(i)
+    return prime_factors, composite_factors
 
 
 # trial division
 def trial_division():
     start_time = time.time()
-    factorisation(user_integer)
-    print(f"The largest prime factor was: \n {prime_factors}\n {composite_factors}")
+    prime2_factors, composite2_factors = factorisation(user_integer)
+    print(f"The largest prime factor was: \n {prime2_factors}\n {composite2_factors}")
     print(f"--- {(time.time() - start_time)} seconds ---")
 
 
