@@ -11,26 +11,34 @@ except Exception as err:
     print(f"Other error occurred: {err}")
     exit()
 
-composite_factors = []
+composite_divisors = []
+composite_quotients = []
 
 
 # recursive factorisation
 def factorisation(number):
     for factor in range(2, int(round((number ** 0.5))) + 1):
-        print(factor)
         if number % factor == 0:
-            composite_factors.append(factor)
+            composite_divisors.append(factor)
+            composite_quotients.append(int(number / factor))
+            break
         else:
             continue
+    if composite_quotients:
+        for sub_factor in composite_quotients:
+            composite_quotients.remove(sub_factor)
+            factorisation(sub_factor)
+    else:
+        composite_divisors.append(number)
 
 
 # trial division
-# def trial_division():
-    # start_time = time.time()
-    # prime2_factors, composite2_factors = factorisation(user_integer)
-    # print(f"The largest prime factor was: \n {prime2_factors}\n {composite2_factors}")
-    # print(f"--- {(time.time() - start_time)} seconds ---")
+def trial_division():
+    start_time = time.time()
+    factorisation(user_integer)
+    prime_factors = sorted(composite_divisors, reverse=True)
+    print(f"The largest prime factor was: \n {prime_factors[0]}")
+    print(f"--- {(time.time() - start_time)} seconds ---")
 
 
-factorisation(user_integer)
-print(composite_factors)
+trial_division()
