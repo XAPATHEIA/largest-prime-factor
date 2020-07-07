@@ -2,8 +2,8 @@ import time
 
 try:
     user_integer = int(input("What number would you like to prime factorize?\n"))
-    while user_integer <= 0:
-        user_integer = int(input("Select a number that's larger than 0.\n"))
+    while user_integer <= 1:
+        user_integer = int(input("Select a number that's larger than 1.\n"))
 except ValueError as v_err:
     print(f"Not integer, try again. \n {v_err}")
     exit()
