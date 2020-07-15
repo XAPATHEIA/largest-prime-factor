@@ -37,7 +37,7 @@ def trial_division():
     start_time = time.time()
     factorisation(user_integer)
     prime_factors = sorted(composite_divisors, reverse=True)
-    print(f"The largest prime factor was: \n {prime_factors[0]}")
+    print(f"The largest prime factor was: \n{prime_factors[0]}")
     print(f"--- {(time.time() - start_time)} seconds ---")
 
 
